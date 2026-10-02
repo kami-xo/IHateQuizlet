@@ -1,0 +1,23 @@
+{
+    "name": "Quiz Template",
+    "questions": [
+        {
+            "question": "Example Question 1",
+            "correct": "This is the correct answer",
+            "incorrect": [
+                "This is a wrong answer",
+                "This is a wrong answer",
+                "This is a wrong answer",
+                "This is a wrong answer"
+            ]
+        },
+      {
+        "question": "Do Pigs Fly?",
+        "correct": "Yes, birds do fly."
+              "incorrect": [
+                "They might not fly",
+
+              ]
+      }
+    ]
+}
