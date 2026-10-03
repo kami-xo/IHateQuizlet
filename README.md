@@ -41,8 +41,9 @@ I also got very tired of Quizlet randomly slapping me with in-app-purchases so I
 - Memory for quizzes (Save & Exit)
 - API for Paste-and-Quiz notes (probably not because api is expensive)
 
+## 💭 Check out my other projects!
 
-
+Visit [here](https://enguyen.org/projects) to see what I'm currently working on! (Probably some random application)
 
 
 
