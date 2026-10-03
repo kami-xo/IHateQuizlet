@@ -1,8 +1,12 @@
-
+#
+# IMPORTS
+#
 import json
 import random
 
-# CODE
+#
+# INITIATION PHASE
+#
 
 
 print('Initiated.')
