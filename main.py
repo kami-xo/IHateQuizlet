@@ -1,7 +1,3 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 import json
 import random
@@ -17,11 +13,22 @@ print('')
 quiz_file = open("quizzes/template.json")
 quiz_data = json.load(quiz_file)
 
-print(quiz_data["name"])
 
-questions = quiz_data["questions"]
+# Question Answer Logic
+print(quiz_data["name"]) # Name of the quiz
+print("-------------------------------------------------------")
+questions = quiz_data["questions"]  # Variable for question
 
-print(questions[0]["question"])
+currentQuestion = random.choice(questions) # sets currentQuestion variable to a random choice of questions in the pool
+print(currentQuestion["question"]) # Prints the current question that is randomly chosen
+
+answers = currentQuestion["incorrect"].copy() # answers now holds all the incorrect questions
+answers.append(currentQuestion["correct"]) # APPEND adds the correct question into the same list as all the incorrect questions
+print(answers)
+
+# print(questions[0]["question"]) # Prints the question #1
+
+
 
 
 
