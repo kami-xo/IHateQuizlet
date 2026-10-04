@@ -8,15 +8,25 @@ import random
 # INITIATION PHASE
 #
 
-
 print('Initiated.')
 print('')
 
+# METHODS
 
-# Open quizzes logic.
-quiz_file = open("quizzes/template.json")
-quiz_data = json.load(quiz_file)
+def p_quizskip(question):
+    print(f"")
+    print(f"That's okay! The correct answer was:")
+    print(question["correct"])
+    print("")
+    input("Press any key to continue...")
 
+# QUIZ LOADING LOGIC
+
+def load_quiz(filepath):
+    quiz_data = json.load(open(filepath))
+    return quiz_data
+
+quiz_data = load_quiz("quizzes/template.json")
 
 ##################################
 #
@@ -60,8 +70,12 @@ while len(questions) > 0:
         choice = int(choice)
         if len(answers) >= choice > 0:
             selectedAnswer = answers[choice - 1]
+        if choice > len(answers) or choice == 0:
+            p_quizskip(currentQuestion)
+            selectedAnswer = ("No Answer / Wrong Answer")
     else:
-        # Not sure logic
+        p_quizskip(currentQuestion)
+        selectedAnswer = ("No Answer / Wrong Answer")
     print("You chose: ", selectedAnswer)
 
 ################
@@ -73,6 +87,8 @@ while len(questions) > 0:
         print("Correct!")
         questions.remove(currentQuestion)
     else:
+        print("The Correct Answer is: ")
+        print(currentQuestion["correct"])
         print("Incorrect!")
 
 ############
