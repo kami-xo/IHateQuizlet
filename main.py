@@ -2,7 +2,7 @@
 # IMPORTS
 #
 import json
-import random
+from quiz import run_quiz
 
 #
 # INITIATION PHASE
@@ -11,98 +11,31 @@ import random
 print('Initiated.')
 print('')
 
-# METHODS
-
-def p_quizskip(question):
-    print(f"")
-    print(f"That's okay! The correct answer was:")
-    print(question["correct"])
-    print("")
-    input("Press any key to continue...")
-
-# QUIZ LOADING LOGIC
+####################################################################
+#
+#                  QUIZ LOADING LOGIC
+#
+####################################################################
 
 def load_quiz(filepath):
     quiz_data = json.load(open(filepath))
     return quiz_data
 
+
+####################################################################
+#
+#                  MAIN.PY PROGRAM BODY
+#
+####################################################################
+
 quiz_data = load_quiz("quizzes/template.json")
-
-##################################
-#
-# QUESTION STRUCTURE
-#
-##################################
-
-print(quiz_data["name"]) # Name of the quiz
-print("-------------------------------------------------------")
-
-questions = quiz_data["questions"]  # Variable for question
-
-#
-# START OF WHILE LOOP, LOOPS THROUGH QUESTIONS ONE BY ONE
-#
-
-while len(questions) > 0:
-
-    currentQuestion = random.choice(questions) # sets currentQuestion variable to a random choice of questions in the pool
-    print(currentQuestion["question"]) # Prints the current question that is randomly chosen
-
-    answers = currentQuestion["incorrect"].copy() # answers now holds all the incorrect answers
-    answers.append(currentQuestion["correct"]) # APPEND adds the correct question into the same list as all the incorrect questions
-    random.shuffle(answers) # Shuffles all the random answers
-
-
-# PRINTS OUT THE QUESTION IN LIST FORM
-    for index, answer in enumerate(answers):
-        print(index + 1, answer)
-
-################
-#
-# QUIZZING LOGIC. IT WILL ASK FOR A QUESTION AND THE USER WILL ENTER THEIR ANSWER
-#
-################
-
-    print(" ")
-    print ("Unsure? Press enter to skip.")
-    choice = input("What is the correct answer? ")
-    if choice.isdigit():
-        choice = int(choice)
-        if len(answers) >= choice > 0:
-            selectedAnswer = answers[choice - 1]
-        if choice > len(answers) or choice == 0:
-            p_quizskip(currentQuestion)
-            selectedAnswer = ("No Answer / Wrong Answer")
-    else:
-        p_quizskip(currentQuestion)
-        selectedAnswer = ("No Answer / Wrong Answer")
-    print("You chose: ", selectedAnswer)
-
-################
-#
-# SELECTION LOGIC. USER WILL THEN SEE IF WHAT THEY GOT WAS CORRECT.
-#
-################
-    if selectedAnswer == currentQuestion["correct"]:
-        print("Correct!")
-        questions.remove(currentQuestion)
-    else:
-        print("The Correct Answer is: ")
-        print(currentQuestion["correct"])
-        print("Incorrect!")
-
-############
-#
-# END OF WHILE LOOP
-#
-############
-
-print("Quizzing Complete!")
+run_quiz(quiz_data)
 
 
 
 
-# print(questions[0]["question"]) # Prints the question #1
+
+
 
 
 
