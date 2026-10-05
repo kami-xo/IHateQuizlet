@@ -3,6 +3,7 @@
 #
 import json
 from quiz import run_quiz
+from pathlib import Path
 
 #
 # INITIATION PHASE
@@ -17,6 +18,11 @@ print('')
 #
 ####################################################################
 
+
+# SEARCHES FOR ALL FILES IN /quizzes AND LOADS
+quizDirectory = Path('quizzes')
+quizDirectory.glob('*.json')
+
 def load_quiz(filepath):
     quiz_data = json.load(open(filepath))
     return quiz_data
@@ -28,8 +34,17 @@ def load_quiz(filepath):
 #
 ####################################################################
 
-quiz_data = load_quiz("quizzes/template.json")
-run_quiz(quiz_data)
+
+print("Please select a quiz below:")
+print("")
+
+for file in quizDirectory.glob('*.json'):
+    print(file)
+
+
+
+# quiz_data = load_quiz("quizzes/template.json")
+# run_quiz(quiz_data)
 
 
 

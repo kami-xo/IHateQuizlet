@@ -1,0 +1,25 @@
+{
+    "name": "Quiz Test",
+    "questions": [
+        {
+            "question": "What color is the sky?",
+            "correct": "Blue",
+            "incorrect": [
+                "Red",
+                "Pink",
+                "Purple",
+                "Orange"
+            ]
+        },
+        {
+            "question": "How do you spell Darwin?",
+            "correct": "Jpxfrd",
+             "incorrect": [
+                "Darwin",
+                "Darwynn",
+                "Dharwin",
+                "Dharwynn"
+             ]
+      }
+    ]
+}
